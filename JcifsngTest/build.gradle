@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+    defaultConfig {
+        applicationId "com.sentaroh.android.JcifsngTest"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+
+            applicationVariants.all { variant ->
+                if (variant.buildType.name.equals("debug")) {
+                    variant.outputs.all {
+                        def versionName = variant.versionName
+                        def versionNumber = variant.versionCode.toString()
+                        def date = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
+                        def mod_name = "${rootProject.name}"
+                        def fileExtension = outputFileName.toString().substring(outputFileName.toString().lastIndexOf(".") + 1)
+                        def newName = "${mod_name}_debug.${fileExtension}"
+//                        outputFileName = "../../../../../release/" + newName
+                    }
+                    task copyDebugApk2(type: Copy) {
+                        from 'build/outputs/apk/debug'
+                        into '../release/' // Into the project root, one level above the app folder
+                        include '*debug.apk'
+                    }
+
+                    afterEvaluate {
+                        packageDebug.finalizedBy(copyDebugApk2)
+                    }
+
+                }
+            }
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+
+            applicationVariants.all { variant ->
+                if (variant.buildType.name.equals("release")) {
+                    variant.outputs.all {
+                        def versionName = variant.versionName
+                        def versionNumber = variant.versionCode.toString()
+                        def date = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
+                        def mod_name = "${rootProject.name}"
+                        def fileExtension = outputFileName.toString().substring(outputFileName.toString().lastIndexOf(".") + 1)
+                        def newName = "${mod_name}_${versionName}_${versionNumber}_release.${fileExtension}"
+                        outputFileName = newName
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.preference:preference:1.0.0'
+
+    implementation files('libs/bcprov-jdk15on-158.jar')
+
+    implementation files('libs/jcifs-ng-2.1.3-master-20190608-00.jar')
+//    implementation files('libs/WrapperForSlf4j-1.0.3.jar')
+//    implementation "eu.agno3.jcifs:jcifs-ng:2.1.5"
+
+    implementation files('libs/Utilities3-1.0.2.aar')
+
+
+
+}
+repositories {
+    mavenCentral()
+}

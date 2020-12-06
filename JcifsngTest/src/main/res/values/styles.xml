@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/navigationBarColorBlack</item>
+        <item name="AppUsedTheme">0</item>
+    </style>
+
+    <style name="AppThemeBlack" parent="Base.Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryBlack</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkBlack</item>
+        <item name="colorAccent">@color/colorAccentBlack</item>
+        <item name="android:windowBackground">@color/windowBackgroundBlack</item>
+        <item name="android:navigationBarColor">@color/navigationBarColorBlack</item>
+        <item name="AppUsedTheme">2</item>
+    </style>
+
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/run_test_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Run"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <Button
+            android:id="@+id/main_copy_clipboard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:text="Copy to clipboard"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/main_domain_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:hint="Domain" />
+
+        <EditText
+            android:id="@+id/main_account_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:ems="10"
+            android:hint="Account name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/main_account_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/main_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <TextView
+            android:id="@+id/main_log_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/main_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="wait" />
+
+
+</LinearLayout>
