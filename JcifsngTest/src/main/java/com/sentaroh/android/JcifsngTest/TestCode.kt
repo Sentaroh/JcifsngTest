@@ -39,20 +39,21 @@ import java.util.Properties
 object TestCode {
 
     private val mLog = LoggerFactory.getLogger(TestCode::class.java)
-
+//
     @Throws(IOException::class)
     fun runTest(activity: MainActivity, prop: Properties, domain_name: String, account_name: String, account_password: String) {
         //      書き出すログの設定です必要に応じて変更して下さい、falseは出力しません
-        val debug = true
-        val trace = true
-        val info = true
-        val warning = true
-        val error = true
-        mLog.setLogOption(debug, error, info, trace, warning)
+//        val debug = true
+//        val trace = true
+//        val info = true
+//        val warning = true
+//        val error = true
+//        mLog.setLogOption(debug, error, info, trace, warning)
+        //
 
         //ここからテストコード
         prop.setProperty("jcifs.smb.client.minVersion", "SMB202")
-        prop.setProperty("jcifs.smb.client.maxVersion", "SMB300")
+        prop.setProperty("jcifs.smb.client.maxVersion", "SMB311")
 
         val bc = BaseContext(PropertyConfiguration(prop))
         val creds = NtlmPasswordAuthenticator(domain_name, account_name, account_password)
